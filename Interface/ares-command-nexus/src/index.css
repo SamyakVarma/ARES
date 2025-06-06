@@ -1,0 +1,101 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 10 10% 4%;
+    --foreground: 0 0% 95%;
+
+    --card: 10 10% 8%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 10 10% 8%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 0 72% 51%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 0 72% 51%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 72% 51%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-military-bg text-foreground font-mono;
+  }
+}
+
+@layer components {
+  .military-panel {
+    @apply bg-military-panel border border-military-border rounded-lg;
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  
+  .military-glow {
+    @apply shadow-lg;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.4), 0 0 40px rgba(239, 68, 68, 0.2);
+  }
+  
+  .header-glow {
+    box-shadow: 0 4px 20px rgba(239, 68, 68, 0.6), 0 0 40px rgba(239, 68, 68, 0.3);
+  }
+  
+  .status-indicator {
+    @apply w-3 h-3 rounded-full animate-pulse;
+    box-shadow: 0 0 10px currentColor;
+  }
+  
+  .joystick-area {
+    @apply relative w-32 h-32 bg-military-panel border-2 border-military-red rounded-full;
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.3), inset 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .joystick-knob {
+    @apply absolute w-8 h-8 bg-military-red rounded-full shadow-lg transition-all duration-100;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.6), 0 0 30px rgba(239, 68, 68, 0.3);
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+  }
+  
+  .card-glow {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+}

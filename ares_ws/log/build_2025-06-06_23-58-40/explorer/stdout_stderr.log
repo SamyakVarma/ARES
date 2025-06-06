@@ -1,0 +1,20 @@
+running egg_info
+writing ../../build/explorer/explorer.egg-info/PKG-INFO
+writing dependency_links to ../../build/explorer/explorer.egg-info/dependency_links.txt
+writing entry points to ../../build/explorer/explorer.egg-info/entry_points.txt
+writing requirements to ../../build/explorer/explorer.egg-info/requires.txt
+writing top-level names to ../../build/explorer/explorer.egg-info/top_level.txt
+reading manifest file '../../build/explorer/explorer.egg-info/SOURCES.txt'
+writing manifest file '../../build/explorer/explorer.egg-info/SOURCES.txt'
+running build
+running build_py
+running install
+running install_lib
+running install_data
+running install_egg_info
+removing '/home/batman/ARES/ares_ws/install/explorer/lib/python3.10/site-packages/explorer-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/explorer/explorer.egg-info to /home/batman/ARES/ares_ws/install/explorer/lib/python3.10/site-packages/explorer-0.0.0-py3.10.egg-info
+running install_scripts
+Installing cloud_to_grid script to /home/batman/ARES/ares_ws/install/explorer/lib/explorer
+Installing gradient_explorer script to /home/batman/ARES/ares_ws/install/explorer/lib/explorer
+writing list of installed files to '/home/batman/ARES/ares_ws/build/explorer/install.log'

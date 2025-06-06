@@ -1,0 +1,3 @@
+[console_scripts]
+cloud_to_grid = explorer.cloud_to_grid:main
+gradient_explorer = explorer.gradient_explorer:main

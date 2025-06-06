@@ -1,0 +1,44 @@
+[0.565s] Invoking command in '/home/batman/ARES/ares_ws/src/explorer': PYTHONPATH=/home/batman/ARES/ares_ws/build/explorer/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/batman/ARES/ares_ws/install/explorer/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/explorer build --build-base /home/batman/ARES/ares_ws/build/explorer/build install --record /home/batman/ARES/ares_ws/build/explorer/install.log --single-version-externally-managed install_data
+[0.702s] running egg_info
+[0.702s] creating ../../build/explorer/explorer.egg-info
+[0.711s] writing ../../build/explorer/explorer.egg-info/PKG-INFO
+[0.711s] writing dependency_links to ../../build/explorer/explorer.egg-info/dependency_links.txt
+[0.711s] writing entry points to ../../build/explorer/explorer.egg-info/entry_points.txt
+[0.711s] writing requirements to ../../build/explorer/explorer.egg-info/requires.txt
+[0.711s] writing top-level names to ../../build/explorer/explorer.egg-info/top_level.txt
+[0.711s] writing manifest file '../../build/explorer/explorer.egg-info/SOURCES.txt'
+[0.728s] reading manifest file '../../build/explorer/explorer.egg-info/SOURCES.txt'
+[0.729s] writing manifest file '../../build/explorer/explorer.egg-info/SOURCES.txt'
+[0.729s] running build
+[0.729s] running build_py
+[0.729s] creating /home/batman/ARES/ares_ws/build/explorer/build
+[0.729s] creating /home/batman/ARES/ares_ws/build/explorer/build/lib
+[0.729s] creating /home/batman/ARES/ares_ws/build/explorer/build/lib/explorer
+[0.729s] copying explorer/gradient_explorer.py -> /home/batman/ARES/ares_ws/build/explorer/build/lib/explorer
+[0.729s] copying explorer/exploration_navigator.py -> /home/batman/ARES/ares_ws/build/explorer/build/lib/explorer
+[0.730s] copying explorer/__init__.py -> /home/batman/ARES/ares_ws/build/explorer/build/lib/explorer
+[0.730s] copying explorer/cloud_to_grid.py -> /home/batman/ARES/ares_ws/build/explorer/build/lib/explorer
+[0.730s] running install
+[0.733s] running install_lib
+[0.742s] creating /home/batman/ARES/ares_ws/install/explorer/lib/python3.10/site-packages/explorer
+[0.742s] copying /home/batman/ARES/ares_ws/build/explorer/build/lib/explorer/gradient_explorer.py -> /home/batman/ARES/ares_ws/install/explorer/lib/python3.10/site-packages/explorer
+[0.742s] copying /home/batman/ARES/ares_ws/build/explorer/build/lib/explorer/exploration_navigator.py -> /home/batman/ARES/ares_ws/install/explorer/lib/python3.10/site-packages/explorer
+[0.742s] copying /home/batman/ARES/ares_ws/build/explorer/build/lib/explorer/__init__.py -> /home/batman/ARES/ares_ws/install/explorer/lib/python3.10/site-packages/explorer
+[0.742s] copying /home/batman/ARES/ares_ws/build/explorer/build/lib/explorer/cloud_to_grid.py -> /home/batman/ARES/ares_ws/install/explorer/lib/python3.10/site-packages/explorer
+[0.742s] byte-compiling /home/batman/ARES/ares_ws/install/explorer/lib/python3.10/site-packages/explorer/gradient_explorer.py to gradient_explorer.cpython-310.pyc
+[0.744s] byte-compiling /home/batman/ARES/ares_ws/install/explorer/lib/python3.10/site-packages/explorer/exploration_navigator.py to exploration_navigator.cpython-310.pyc
+[0.744s] byte-compiling /home/batman/ARES/ares_ws/install/explorer/lib/python3.10/site-packages/explorer/__init__.py to __init__.cpython-310.pyc
+[0.744s] byte-compiling /home/batman/ARES/ares_ws/install/explorer/lib/python3.10/site-packages/explorer/cloud_to_grid.py to cloud_to_grid.cpython-310.pyc
+[0.745s] running install_data
+[0.745s] creating /home/batman/ARES/ares_ws/install/explorer/share/ament_index
+[0.745s] creating /home/batman/ARES/ares_ws/install/explorer/share/ament_index/resource_index
+[0.745s] creating /home/batman/ARES/ares_ws/install/explorer/share/ament_index/resource_index/packages
+[0.745s] copying resource/explorer -> /home/batman/ARES/ares_ws/install/explorer/share/ament_index/resource_index/packages
+[0.745s] copying package.xml -> /home/batman/ARES/ares_ws/install/explorer/share/explorer
+[0.746s] running install_egg_info
+[0.755s] Copying ../../build/explorer/explorer.egg-info to /home/batman/ARES/ares_ws/install/explorer/lib/python3.10/site-packages/explorer-0.0.0-py3.10.egg-info
+[0.755s] running install_scripts
+[0.845s] Installing cloud_to_grid script to /home/batman/ARES/ares_ws/install/explorer/lib/explorer
+[0.845s] Installing gradient_explorer script to /home/batman/ARES/ares_ws/install/explorer/lib/explorer
+[0.845s] writing list of installed files to '/home/batman/ARES/ares_ws/build/explorer/install.log'
+[0.863s] Invoked command in '/home/batman/ARES/ares_ws/src/explorer' returned '0': PYTHONPATH=/home/batman/ARES/ares_ws/build/explorer/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/batman/ARES/ares_ws/install/explorer/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/explorer build --build-base /home/batman/ARES/ares_ws/build/explorer/build install --record /home/batman/ARES/ares_ws/build/explorer/install.log --single-version-externally-managed install_data
