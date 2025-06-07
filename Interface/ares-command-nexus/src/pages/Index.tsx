@@ -1,28 +1,25 @@
-
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Switch } from '@/components/ui/switch';
 import { Badge } from '@/components/ui/badge';
 import ControlPanel from '@/components/ControlPanel';
 import CameraFeed from '@/components/CameraFeed';
 import MountedCameraFeed from '@/components/MountedCameraFeed';
 import MapVisualization from '@/components/MapVisualization';
-import FaceDetection from '@/components/FaceDetection';
-import SystemStatus from '@/components/SystemStatus';
 
 const Index = () => {
   const [isManualMode, setIsManualMode] = useState(false);
   const [selectedTarget, setSelectedTarget] = useState<string | null>(null);
-  const [connectionStatus, setConnectionStatus] = useState('connected');
 
   return (
     <div className="min-h-screen bg-military-bg">
+      {/* Header */}
       <div className="relative border-b-2 border-military-red header-glow">
         <div className="flex items-center justify-center py-6">
           <div className="flex items-center space-x-4">
             <div className="w-16 h-16 bg-military-red rounded-lg flex items-center justify-center military-glow">
-              <span className="text-3xl font-bold text-white"><img src='ARES.png'></img></span>
+              <span className="text-3xl font-bold text-white">
+                <img src='ARES.png' alt="ARES" />
+              </span>
             </div>
             <div className="text-center">
               <h1 className="text-4xl font-bold text-military-red font-mono text-glow">A.R.E.S.</h1>
@@ -32,17 +29,23 @@ const Index = () => {
         </div>
       </div>
 
+      {/* Main Grid */}
       <div className="p-4">
         <div className="grid grid-cols-12 gap-4 h-[calc(100vh-10rem)]">
-          {/* Navigation Camera - Far Left */}
-          <div className="col-span-4 flex items-start justify-center">
+          
+          {/* Left Column: Navigation Camera + Map */}
+          <div className="col-span-4 flex-1 flex-col space-y-4 items-center">
             <div className="w-full max-w-[500px] aspect-video card-glow">
               <CameraFeed />
             </div>
+            <div className="w-full max-w-[500px] flex-1 card-glow overflow-hidden">
+              <MapVisualization />
+            </div>
           </div>
 
-          {/* Control Interface - Center */}
+          {/* Center Column: Controls + Status */}
           <div className="col-span-4 space-y-4">
+            {/* Control Panel */}
             <div className="card-glow">
               <ControlPanel 
                 isManualMode={isManualMode}
@@ -72,14 +75,9 @@ const Index = () => {
                 </div>
               </CardContent>
             </Card>
-
-            {/* Map */}
-            <div className="flex-1 card-glow">
-              <MapVisualization />
-            </div>
           </div>
 
-          {/* Mounted Camera - Far Right */}
+          {/* Right Column: Mounted Camera */}
           <div className="col-span-4 flex items-start justify-center">
             <div className="w-full max-w-[500px] aspect-video card-glow">
               <MountedCameraFeed />
@@ -87,8 +85,6 @@ const Index = () => {
           </div>
         </div>
       </div>
-
-
     </div>
   );
 };

@@ -21,7 +21,7 @@ const CameraFeed: React.FC = () => {
   }, [feedStatus]);
 
   return (
-    <Card className="military-panel h-full aspect-video max-w-full mx-auto">
+   <Card className="military-panel w-full max-w-full aspect-video mx-auto flex flex-col h-80">
       <CardHeader className="pb-2">
         <div className="flex items-center justify-between">
           <CardTitle className="text-military-red text-sm">NAVIGATION CAMERA</CardTitle>
@@ -38,7 +38,8 @@ const CameraFeed: React.FC = () => {
         </div>
       </CardHeader>
 
-      <CardContent className="relative h-full overflow-hidden rounded border border-military-border bg-black">
+      <CardContent className="relative flex-1 overflow-hidden rounded border border-military-border bg-black">
+
         {/* Video Feed */}
         {feedStatus !== 'disconnected' && (
           <img

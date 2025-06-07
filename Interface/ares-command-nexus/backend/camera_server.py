@@ -12,6 +12,7 @@ from std_srvs.srv import Empty
 from std_msgs.msg import String
 import sensor_msgs_py.point_cloud2 as pc2
 from sensor_msgs.msg import PointCloud2
+from nav_msgs.msg import OccupancyGrid, Odometry
 import threading
 import serial
 import json
@@ -25,7 +26,9 @@ cmd_vel_pub = None
 odom_reset_cli = None
 follow_pub = None
 confirm_pub = None
+latest_occupancy_grid = None
 latest_pointcloud = None
+latest_robot_pose = None
 
 joystick_active = False
 last_joystick_time = 0
@@ -71,6 +74,10 @@ def read_serial_loop():
         if time.time() - last_joystick_time > joystick_timeout:
             joystick_active = False
 
+def odom_callback(msg):
+    global latest_robot_pose
+    latest_robot_pose = msg
+
 def generate_frames():
     global cap
     while True:
@@ -82,6 +89,10 @@ def generate_frames():
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + buffer.tobytes() + b'\r\n')
         time.sleep(0.02)
+
+def occupancy_grid_callback(msg):
+    global latest_occupancy_grid
+    latest_occupancy_grid = msg
 
 def cloud_callback(msg):
     global latest_pointcloud
@@ -130,6 +141,68 @@ def get_map():
 def video_feed():
     return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
+@app.route('/occupancy_grid', methods=['GET'])
+def get_occupancy_grid():
+    global latest_occupancy_grid
+    if latest_occupancy_grid is None:
+        return jsonify({'status': 'error', 'message': 'No occupancy grid data available'})
+
+    width = latest_occupancy_grid.info.width
+    height = latest_occupancy_grid.info.height
+    data = list(latest_occupancy_grid.data)
+    grid = [data[i * width:(i + 1) * width] for i in range(height)]
+
+    # Flip vertically so 0,0 is bottom-left in display
+    grid = grid[::-1]
+
+    return jsonify({
+        'status': 'ok',
+        'width': width,
+        'height': height,
+        'resolution': latest_occupancy_grid.info.resolution,
+        'origin': {
+            'position': {
+                'x': latest_occupancy_grid.info.origin.position.x,
+                'y': latest_occupancy_grid.info.origin.position.y,
+                'z': latest_occupancy_grid.info.origin.position.z
+            },
+            'orientation': {
+                'x': latest_occupancy_grid.info.origin.orientation.x,
+                'y': latest_occupancy_grid.info.origin.orientation.y,
+                'z': latest_occupancy_grid.info.origin.orientation.z,
+                'w': latest_occupancy_grid.info.origin.orientation.w
+            }
+        },
+        'data': grid
+    })
+
+@app.route('/robot_pose', methods=['GET'])
+def robot_pose():
+    global latest_robot_pose
+    if latest_robot_pose is None:
+        return jsonify({'status': 'error', 'message': 'No odometry data yet'})
+
+    pos = latest_robot_pose.pose.pose.position
+    twist = latest_robot_pose.twist.twist
+
+    return jsonify({
+        'status': 'ok',
+        'position': {'x': pos.x, 'y': pos.y, 'z': pos.z},
+        'velocity': {
+            'linear': {
+                'x': twist.linear.x,
+                'y': twist.linear.y,
+                'z': twist.linear.z
+            },
+            'angular': {
+                'x': twist.angular.x,
+                'y': twist.angular.y,
+                'z': twist.angular.z
+            }
+        }
+    })
+
+
 @app.route('/cmd_vel', methods=['POST'])
 def cmd_vel():
     global cmd_vel_pub
@@ -161,6 +234,9 @@ def fire():
 def index():
     return "<h2>Camera Feed Server Running</h2>"
 
+def ros_spin_thread():
+    rclpy.spin(ros_node)
+
 if __name__ == '__main__':
     if os.environ.get('WERKZEUG_RUN_MAIN') == 'true' or not app.debug:
         cap = cv2.VideoCapture(0)
@@ -169,9 +245,12 @@ if __name__ == '__main__':
 
         rclpy.init()
         ros_node = Node('web_cmd_vel_publisher')
-        cmd_vel_pub = ros_node.create_publisher(Twist, '/cmd_vel', 10)
+        cmd_vel_pub = ros_node.create_publisher(Twist, '/bcr_bot/cmd_vel', 10)
         ros_node.create_subscription(PointCloud2, '/rtabmap/point_cloud/global_map', cloud_callback, 10)
+        ros_node.create_subscription(OccupancyGrid, '/global_cloud_grid', occupancy_grid_callback, 10)
+        ros_node.create_subscription(Odometry, '/rtabmap/odom', odom_callback, 10)
 
-        threading.Thread(target=read_serial_loop, daemon=True).start()
+        threading.Thread(target=ros_spin_thread, daemon=True).start()
+        # threading.Thread(target=read_serial_loop, daemon=True).start()
 
     app.run(host='0.0.0.0', port=5000, debug=False)

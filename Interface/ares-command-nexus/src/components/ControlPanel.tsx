@@ -72,9 +72,9 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ isManualMode, setIsManualMo
 
     setJoystickPosition({ x, y });
 
-    const vx = +(x / maxDistance * 2).toFixed(2);
+    const vx = +(-x / maxDistance ).toFixed(2);
     const vz = +(-y / maxDistance * 2).toFixed(2);
-    publishVelocity(vx, vz);
+    publishVelocity(vz, vx);
   };
 
   const handleTurretMove = (clientX: number, clientY: number) => {
@@ -117,6 +117,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ isManualMode, setIsManualMo
       setJoystickPosition({ x: 0, y: 0 });
       if (activeKeysRef.current.size === 0) {
         publishVelocity(0, 0);
+        setJoystickPosition({ x: 0, y: 0 });
       }
     }
 
@@ -133,17 +134,32 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ isManualMode, setIsManualMo
     handleJoystickMove(e.clientX, e.clientY);
   };
 
+  const updateJoystickVisualFromKeys = () => {
+    const keys = activeKeysRef.current;
+      const maxDistance = 48; // same as in handleJoystickMove
+
+      let x = 0, y = 0;
+
+      if (keys.has('a')) x -= maxDistance;
+      if (keys.has('d')) x += maxDistance;
+      if (keys.has('w')) y -= maxDistance;
+      if (keys.has('s')) y += maxDistance;
+
+      setJoystickPosition({ x, y });
+    }; 
+
   const updateKeyboardVelocity = () => {
     const keys = activeKeysRef.current;
     let vx = 0, vz = 0;
 
-    if (keys.has('w')) vx += 2;
-    if (keys.has('s')) vx -= 2;
-    if (keys.has('a')) vz += 2;
-    if (keys.has('d')) vz -= 2;
+    if (keys.has('w')) vx += 1;
+    if (keys.has('s')) vx -= 1;
+    if (keys.has('a')) vz += 0.5;
+    if (keys.has('d')) vz -= 0.5;
 
     setKeyboardVelocity({ x: vx, y: vz });
     publishVelocity(vx, vz);
+    updateJoystickVisualFromKeys();
   };
 
   const handleKeyDown = (e: KeyboardEvent) => {
