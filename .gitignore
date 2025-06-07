@@ -9,4 +9,5 @@ bcr_bot/
 **/install/
 **/log/
 
-Interface/ares-command-nexus/node_modules/
+node_modules/
+.npm/
