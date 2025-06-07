@@ -9,5 +9,4 @@ bcr_bot/
 **/install/
 **/log/
 
-node_modules/
-.npm/
+**/node_modules/
