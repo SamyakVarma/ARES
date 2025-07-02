@@ -21,7 +21,8 @@ setup(
     entry_points={
         'console_scripts': [
             'gradient_explorer =  explorer.gradient_explorer:main',
-            'cloud_to_grid = explorer.cloud_to_grid:main'
+            'cloud_to_grid = explorer.cloud_to_grid:main',
+            'exploration_navigator = explorer.exploration_navigator:main'
         ],
     },
 )
