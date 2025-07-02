@@ -1,0 +1,12 @@
+# Ignore folders related to the project
+bcr_bot/
+
+# Ignore all .vscode folders (even nested ones)
+**/.vscode/
+
+# Ignore ROS 2 workspace build artifacts
+**/build/
+**/install/
+**/log/
+
+**/node_modules/
