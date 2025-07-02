@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import numpy as np
 from scipy.spatial import KDTree
 import random
@@ -184,6 +185,8 @@ class RRTPlanner:
             return float('inf')
         return sum(np.linalg.norm(self.path[i] - self.path[i - 1]) for i in range(1, len(self.path)))
 =======
+=======
+>>>>>>> f0e7726ebbc9fc0fb28137e81fb25a72f067c579
 import numpy as np
 from scipy.spatial import KDTree
 import random
@@ -368,4 +371,7 @@ class RRTPlanner:
         if not self.goal_reached or not self.path:
             return float('inf')
         return sum(np.linalg.norm(self.path[i] - self.path[i - 1]) for i in range(1, len(self.path)))
+<<<<<<< HEAD
 >>>>>>> f0e7726e (updated face recognitions)
+=======
+>>>>>>> f0e7726ebbc9fc0fb28137e81fb25a72f067c579

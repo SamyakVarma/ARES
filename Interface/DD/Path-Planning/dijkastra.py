@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import sys
 from heapq import heapify,heappush,heappop
 
@@ -38,6 +39,8 @@ def dijkastra(graph,start,fin):
     print("Shortest dist = "+ str(nodes[fin]['cost']))
     print("Shortest path = "+ str(nodes[fin]['pred']+list(fin)))
 =======
+=======
+>>>>>>> f0e7726ebbc9fc0fb28137e81fb25a72f067c579
 import sys
 from heapq import heapify,heappush,heappop
 
@@ -76,5 +79,8 @@ def dijkastra(graph,start,fin):
         curr_node=min_heap[0][1]
     print("Shortest dist = "+ str(nodes[fin]['cost']))
     print("Shortest path = "+ str(nodes[fin]['pred']+list(fin)))
+<<<<<<< HEAD
 >>>>>>> f0e7726e (updated face recognitions)
+=======
+>>>>>>> f0e7726ebbc9fc0fb28137e81fb25a72f067c579
 dijkastra(graph,start,end)

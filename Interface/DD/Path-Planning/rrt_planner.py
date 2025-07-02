@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.spatial import KDTree
@@ -156,6 +157,8 @@ class RRTPlanner:
         return sum(np.linalg.norm(self.path[i] - self.path[i-1]) for i in range(1, len(self.path)))
 
 =======
+=======
+>>>>>>> f0e7726ebbc9fc0fb28137e81fb25a72f067c579
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.spatial import KDTree
@@ -312,4 +315,7 @@ class RRTPlanner:
     def path_length(self):
         return sum(np.linalg.norm(self.path[i] - self.path[i-1]) for i in range(1, len(self.path)))
 
+<<<<<<< HEAD
 >>>>>>> f0e7726e (updated face recognitions)
+=======
+>>>>>>> f0e7726ebbc9fc0fb28137e81fb25a72f067c579

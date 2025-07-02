@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import numpy as np
 import pygame
 import sys
@@ -184,6 +185,8 @@ class DebugVisualizer:
 if __name__ == "__main__":
     DebugVisualizer().run()
 =======
+=======
+>>>>>>> f0e7726ebbc9fc0fb28137e81fb25a72f067c579
 import numpy as np
 import pygame
 import sys
@@ -368,4 +371,7 @@ class DebugVisualizer:
 
 if __name__ == "__main__":
     DebugVisualizer().run()
+<<<<<<< HEAD
 >>>>>>> f0e7726e (updated face recognitions)
+=======
+>>>>>>> f0e7726ebbc9fc0fb28137e81fb25a72f067c579

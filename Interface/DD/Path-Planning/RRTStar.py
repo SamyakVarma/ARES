@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import pygame
 import numpy as np
 import random
@@ -367,6 +368,8 @@ def main():
 
 if __name__ == "__main__":
 =======
+=======
+>>>>>>> f0e7726ebbc9fc0fb28137e81fb25a72f067c579
 import pygame
 import numpy as np
 import random
@@ -734,5 +737,8 @@ def main():
     pygame.quit()
 
 if __name__ == "__main__":
+<<<<<<< HEAD
 >>>>>>> f0e7726e (updated face recognitions)
+=======
+>>>>>>> f0e7726ebbc9fc0fb28137e81fb25a72f067c579
     main()

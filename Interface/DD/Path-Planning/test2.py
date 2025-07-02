@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import pygame
 import sys
 import numpy as np
@@ -93,6 +94,8 @@ def main():
 if __name__ == "__main__":
     main()
 =======
+=======
+>>>>>>> f0e7726ebbc9fc0fb28137e81fb25a72f067c579
 import pygame
 import sys
 import numpy as np
@@ -186,4 +189,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+<<<<<<< HEAD
 >>>>>>> f0e7726e (updated face recognitions)
+=======
+>>>>>>> f0e7726ebbc9fc0fb28137e81fb25a72f067c579
